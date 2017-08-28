@@ -18,7 +18,10 @@ func reverseString(string : String) -> String{
 let reversed = reverseString(string: str)
 
 // Substring
+
+// Creates an String.index from String.startIndex to number of elements, offsetby is not the ending index.
 let index = str.index(str.startIndex, offsetBy: 5)
 let hello = str.substring(to: index)  // Hello
 print(hello)
+
 
