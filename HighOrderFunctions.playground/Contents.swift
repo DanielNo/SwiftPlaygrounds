@@ -24,19 +24,27 @@ pizzaTypes.map { (pizzas) -> String in
 
 let dupeNums = [1,2,2,3,3,3,4,4,4,4,5]
 
-func occurenceOfNumbers(nums : [Int]) -> [Int : Int]{
+func occurenceOfNumbers(nums : [Int]) -> Int {
+    let target = nums.count/2
     var dict = [Int:Int]()
+    var majority = 0
     nums.map {
         if let val: Int = dict[$0]  {
-            dict[$0] = val+1
+            if(val+1 > target){
+                majority = $0
+            }
+            else{
+                dict[$0] = val+1
+            }
         } else {
             dict[$0] = 1
         }
     }
-    return dict
+    return majority
 }
-
+let test = [3,2,3]
 occurenceOfNumbers(nums: dupeNums)
+occurenceOfNumbers(nums: test)
 
 
 ///////////////////////////////////////////
@@ -48,7 +56,6 @@ arr.reduce(0,-)
 arr.reduce(0,+)
 arr.reduce(2000,/)
 arr.reduce(1,*)
-
 
 
 
