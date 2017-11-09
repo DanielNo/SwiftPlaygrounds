@@ -15,3 +15,4 @@ let names = ["john","mary","paul","wendy"]
 for name in names{
 print("welcome \(name)!")
 }
+

@@ -1,8 +1,8 @@
 import Foundation
 
 public class ClassRef{
-    var mutableVal : Int
-    let immutableVal : Int
+    public var mutableVal : Int
+    public let immutableVal : Int
     
     public init(value : Int){
         mutableVal = value

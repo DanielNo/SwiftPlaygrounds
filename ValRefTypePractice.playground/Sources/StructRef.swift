@@ -1,14 +1,12 @@
 import Foundation
 
 public struct StructRef{
-    var mutableVal : Int
-    let immutableVal : Int
+    public var mutableVal : Int
+    public let immutableVal : Int
     
     
     
-//    public init(value: Int){
-//        self.val = value
-//
-//
-//    }
-}
+    public init(value : Int) {
+        mutableVal = value
+        immutableVal = value
+    }}
