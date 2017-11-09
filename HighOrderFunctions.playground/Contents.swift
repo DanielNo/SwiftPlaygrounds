@@ -97,7 +97,7 @@ func containsVowel(str : String) -> Bool{
 states.filter(containsVowel)
 
 ///////////////////////////////////////////
-// FlapMap : flatten a collection of collections
+// FlatMap : flatten a collection of collections
 ///////////////////////////////////////////
 let collections = [[5,2,7],[4,8],[9,1,3]]
 let flat = collections.flatMap { $0 }
