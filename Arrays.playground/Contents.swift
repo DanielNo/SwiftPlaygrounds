@@ -3,14 +3,12 @@
 import UIKit
 
 
-var nums = [1,2,3,4,5]
+var nums = [1,2,3,4,5,6]
 
-// Move first value in array to the end
-for var i in 0..<nums.count{
-    if (i < nums.count-1) {
-        swap(&nums[i], &nums[i+1])
-    }
-    print(nums)
-}
+// Subarray, result is of type arrayslice, which need to be casted to array
+let mid = nums.count
+let firstHalf = Array(nums[...mid])
+let secondHalf = Array(nums[mid...])
 
-print(nums)
+
+
