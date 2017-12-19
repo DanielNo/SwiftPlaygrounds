@@ -28,3 +28,11 @@ bStruct.mutableVal = 5
 //bStruct.immutableVal = 22
 
 print(bStruct)
+
+// Strings, Dictionaries, Arrays are value types
+var str1 = "Hello"
+var str2 = str1
+str1 = "Bye"
+print(str2)
+
+

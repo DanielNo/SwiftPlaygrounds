@@ -111,6 +111,16 @@ let dict4 = dict3.flatMap { $0 }
 print(dict4)
 
 ///////////////////////////////////////////
+// Foreach : A closure that takes an element of the sequence as a parameter.
+///////////////////////////////////////////
+
+
+let nums2 = [10,11,12,13,14]
+nums2.forEach {
+    print($0)
+}
+
+///////////////////////////////////////////
 // Chaining high order functions
 ///////////////////////////////////////////
 
