@@ -24,6 +24,12 @@ let index = str.index(str.startIndex, offsetBy: 5)
 let hello = str.substring(to: index)  // Hello
 print(hello)
 
+//    let start = word.index(word.startIndex, offsetBy: r1)
+//    let end = word.index(word.startIndex, offsetBy: r2)
+//    let range = start...end
+//    let substring = word[range]
+
+
 
 // Get the nth character in string
 

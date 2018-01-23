@@ -59,6 +59,51 @@ public class BinaryTree : CustomStringConvertible{
         self.root = Node(val: val)
     }
     
+    func insert(node : Node) {
+        
+    }
+    
+    func bstInsert(node : Node, value : Int) {
+        if value > node.value{
+            if node.right == nil{
+                print("nil right")
+                node.right = Node(val: value)
+            }else{
+                print("recurse right")
+                bstInsert(node: node.right!, value: value)
+            }
+            
+        }else if(value <= node.value){
+            guard let left = node.left else{
+                node.left = Node(val: value)
+                print("nil left")
+
+             return
+            }
+            print("recurse left")
+            bstInsert(node: left, value: value)
+
+//            if node.left == nil{
+//                node.left = Node(val: value)
+//
+//            }else{
+//                bstInsert(node: node.left!, value: value)
+//            }
+
+        }
+    }
+
+    func treeString(traversal : TreeTraversal) -> String{
+        switch traversal {
+        case .postorder:
+            return self.postorderPrint(node: self.root)
+        case .preorder:
+            return self.preorderPrint(node: self.root)
+        case .inorder:
+            return self.inorderPrint(node: self.root)
+        }
+    }
+    
     func printTree(traversal : TreeTraversal){
         switch traversal {
         case .postorder:
@@ -69,6 +114,7 @@ public class BinaryTree : CustomStringConvertible{
             print(self.inorderPrint(node: self.root))
         }
     }
+
     
     func preorderSearch(node : Node, value : Int) -> Bool{
         if node.value == value{
@@ -132,19 +178,28 @@ public class BinaryTree : CustomStringConvertible{
 
 }
 
-let tree = BinaryTree(val: 1)
-tree.root?.left = Node(val: 2)
-tree.root?.right = Node(val: 3)
-tree.root?.left?.left = Node(val: 4)
-tree.root?.left?.right = Node(val: 5)
-let n1 = Node(val: 1)
+//let tree = BinaryTree(val: 1)
+//tree.root?.left = Node(val: 2)
+//tree.root?.right = Node(val: 3)
+//tree.root?.left?.left = Node(val: 4)
+//tree.root?.left?.right = Node(val: 5)
+//let n1 = Node(val: 1)
+//
+//tree.preorderPrint(node: tree.root)
+//tree.preorderSearch(node: tree.root, value: 7)
+//tree.postorderPrint(node: tree.root)
+//
+//
+//tree.printTree(traversal: .preorder)
+//tree.printTree(traversal: .postorder)
+//tree.printTree(traversal: .inorder)
+//tree.bstInsert(node: tree.root, value: 7)
+//tree.bstInsert(node: tree.root, value: 2)
+//tree.printTree(traversal: .inorder)
 
-tree.preorderPrint(node: tree.root)
-tree.preorderSearch(node: tree.root, value: 7)
-tree.postorderPrint(node: tree.root)
 
-
-tree.printTree(traversal: .preorder)
-tree.printTree(traversal: .postorder)
-tree.printTree(traversal: .inorder)
-
+var tree2 = BinaryTree(val: 1)
+tree2.bstInsert(node: tree2.root, value: 2)
+//tree2.bstInsert(node: tree2.root, value: 3)
+let x = tree2.treeString(traversal: .preorder)
+print(x)
