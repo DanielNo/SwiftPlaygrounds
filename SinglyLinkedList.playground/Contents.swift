@@ -55,7 +55,6 @@ public class SinglyLinkedList : CustomStringConvertible{
     
     init(node : Node) {
         self.head = node
-        var curr = node
     }
     
     init(nums : [Int]) {
@@ -65,17 +64,14 @@ public class SinglyLinkedList : CustomStringConvertible{
         }
         self.head == nil
         var curr = head
-        var desc = ""
         for num in nums{
             if self.head == nil{
              self.head = Node(num: num)
                 curr = self.head
-                desc = head!.description
             }else{
                 let next = Node(num : num)
                 curr?.add(node: next)
                 curr = curr?.next
-                desc += " \(next.description)"
             }
         }
     }
@@ -91,7 +87,7 @@ public class SinglyLinkedList : CustomStringConvertible{
 
     }
     
-    func printLinkedList() -> String{
+    func printLinkedList(){
         var node = head
         var output = "["
         while node != nil {
@@ -103,7 +99,6 @@ public class SinglyLinkedList : CustomStringConvertible{
         }
         output = output + "]"
         print("Singly Linked List : \(output)")
-        return output
     }
     
     func count() -> Int{
