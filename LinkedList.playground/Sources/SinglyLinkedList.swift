@@ -1,32 +1,4 @@
-//: Playground - noun: a place where people can play
-
-import UIKit
-
-public class Node : CustomStringConvertible{
-    public var description: String
-    
-    var value : Int
-    var next : Node?
-    
-    init() {
-        self.value = 0
-        self.next = nil
-        self.description = String(value)
-    }
-    
-    init(num : Int) {
-        self.value = num
-        self.description = String(value)
-    }
-    
-    func add(node : Node){
-        self.next = node
-    }
-    
-    func printNode(){
-        print(self.description)
-    }
-}
+import Foundation
 
 public class SinglyLinkedList : CustomStringConvertible{
     public var description: String {
@@ -40,24 +12,24 @@ public class SinglyLinkedList : CustomStringConvertible{
                 desc = curr!.description
             }else{
                 desc += ", \(curr!.description)"
-
+                
             }
             curr = curr?.next
         }
         desc = "[\(desc)]"
         return desc
     }
-    var head : Node?
+    public var head : Node?
     
-    init() {
+    public init() {
         self.head = nil
     }
     
-    init(node : Node) {
+    public init(node : Node) {
         self.head = node
     }
     
-    init(nums : [Int]) {
+    public init(nums : [Int]) {
         if nums.count == 0 {
             self.head == nil
             return
@@ -66,7 +38,7 @@ public class SinglyLinkedList : CustomStringConvertible{
         var curr = head
         for num in nums{
             if self.head == nil{
-             self.head = Node(num: num)
+                self.head = Node(num: num)
                 curr = self.head
             }else{
                 let next = Node(num : num)
@@ -75,19 +47,19 @@ public class SinglyLinkedList : CustomStringConvertible{
             }
         }
     }
-        
+    
     
     // Add node to end of LinkedList
-    func append(node : Node){
+    public func append(node : Node){
         var current = head
         while current!.next != nil {
             current = current!.next
         }
         current?.add(node: node)
-
+        
     }
     
-    func printLinkedList(){
+    public func printLinkedList(){
         var node = head
         var output = "["
         while node != nil {
@@ -101,7 +73,7 @@ public class SinglyLinkedList : CustomStringConvertible{
         print("Singly Linked List : \(output)")
     }
     
-    func count() -> Int{
+    public func count() -> Int{
         if head == nil{
             return 0
         }
@@ -114,7 +86,7 @@ public class SinglyLinkedList : CustomStringConvertible{
         return count
     }
     
-    func nodeAt(index: Int) -> Node?{
+    public func nodeAt(index: Int) -> Node?{
         if (index < 0){return nil}
         var count = 0
         var node = head
@@ -126,7 +98,7 @@ public class SinglyLinkedList : CustomStringConvertible{
         return node
     }
     
-    func insert(node : Node, index : Int){
+    public func insert(node : Node, index : Int){
         if index >= self.count() || index < 0{
             print("invalid")
             return
@@ -146,7 +118,7 @@ public class SinglyLinkedList : CustomStringConvertible{
     }
     
     // Removes first occurence of value in linked list
-    func remove(value : Int){
+    public func remove(value : Int){
         var node = head
         if head?.value == value {
             head = head?.next
@@ -163,12 +135,7 @@ public class SinglyLinkedList : CustomStringConvertible{
         }
     }
     
-    
-    
-    
-    
-    
-    func delete(position : Int){
+    public func delete(position : Int){
         if position == 0{
             self.head = self.head?.next
             return
@@ -180,7 +147,7 @@ public class SinglyLinkedList : CustomStringConvertible{
     }
     
     // incomplete
-    func removeNodesWithValue(value : Int){
+    public func removeNodesWithValue(value : Int){
         var current = head
         var prev : Node? = nil
         while current?.value != value && current?.next != nil {
@@ -192,12 +159,12 @@ public class SinglyLinkedList : CustomStringConvertible{
                 }else{
                     self.head = current?.next
                 }
-
+                
             }
         }
     }
     
-    func reverseTraversal() -> SinglyLinkedList?{
+    public func reverseTraversal() -> SinglyLinkedList?{
         var prev : Node?
         var current = head
         var nextNode = current?.next
@@ -211,7 +178,7 @@ public class SinglyLinkedList : CustomStringConvertible{
         return self
     }
     
-    func recursiveReverse(nextNode : Node?,current : Node?) -> Void{
+    public func recursiveReverse(nextNode : Node?,current : Node?) -> Void{
         if current == nil {
             return
         }else{
@@ -222,7 +189,7 @@ public class SinglyLinkedList : CustomStringConvertible{
         
     }
     
-    func recursiveAddition(nextNode : Node) -> Int{
+    public func recursiveAddition(nextNode : Node) -> Int{
         if nextNode == nil {
             return 0
         }else{
@@ -236,23 +203,3 @@ public class SinglyLinkedList : CustomStringConvertible{
     }
     
 }
-let a = Node(num: 1)
-let b = Node(num: 2)
-let c = Node(num: 3)
-let d = Node(num: 100)
-var myLinkedList = SinglyLinkedList(node: a)
-myLinkedList.append(node: b)
-myLinkedList.append(node: c)
-myLinkedList.insert(node: d, index: 0)
-
-myLinkedList.delete(position: 0)
-
-myLinkedList.reverseTraversal()
-//myLinkedList.recursiveReverse(nextNode: nil, current: myLinkedList.head)
-
-myLinkedList.recursiveAddition(nextNode: myLinkedList.head!)
-//myLinkedList.removeNodeWithValue(value: 3)
-myLinkedList.remove(value: 1)
-
-var v = SinglyLinkedList(nums: [1,2,3,4,5,5,5])
-
