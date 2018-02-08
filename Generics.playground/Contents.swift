@@ -6,6 +6,35 @@ import UIKit
 func genFunc<T>(a : [T]) -> [T]{
     return a
 }
+func genericFunction<S: CustomStringConvertible>(string: S) {
+    print(string)
+}
+
+// Example in swift manual
+func swapTwoValuez<T>(_ a: inout T, _ b: inout T) {
+    let temporaryA = a
+    a = b
+    b = temporaryA
+}
+
+// Element and T are interchangeable?
+func swapTwoValues<Element>(_ a: inout Element, _ b: inout Element) {
+    let temporaryA = a
+    a = b
+    b = temporaryA
+}
+
+struct test<T>{
+    var dict : [Hashable:T]
+    init() {
+        
+    }
+}
+
+
+
+//struct GenericQueue<T>{
+//    fileprivate var elements : [T] = []
 
 struct GenericQueue<Element>{
     fileprivate var elements : [Element] = []
