@@ -3,7 +3,7 @@
 import UIKit
 
 
-protocol ContactInfo {
+protocol UserInfo {
     var name : String? {get set}
     var address : String? {get set}
     var uniqueID : Int64 {get set}
@@ -11,11 +11,20 @@ protocol ContactInfo {
     var secondaryPhoneNumber : Int? {get set}
     var emailAddress : String? {get set}
     
-    
+    func exampleProtocolMethod() -> Void
 
 }
 
-public class Person : ContactInfo {
+
+public class Person : UserInfo, Emailable {
+    func sendEmail(_ emailAddress: String) {
+        
+    }
+    
+    func exampleProtocolMethod() {
+        print("implement this method")
+    }
+    
     var name: String?
     
     var address: String?
@@ -39,4 +48,5 @@ public class Person : ContactInfo {
     
     
 }
+
 

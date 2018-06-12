@@ -2,13 +2,16 @@
 
 import UIKit
 
-
-var nums = [1,2,3,4,5,6]
-
-// Subarray, result is of type arrayslice, which need to be casted to array
-let mid = nums.count
-let firstHalf = Array(nums[...mid])
-let secondHalf = Array(nums[mid...])
+// String to Array
+let characters = Array("hello world")
+let first = characters[0]
 
 
 
+// SubArray using ArraySlice
+let arr = [1,2,3,4]
+// subArraySlice is of type ArraySlice, which shares the same interface as Array
+let subArraySlice = arr[0...2]
+
+//Cast ArraySlice to a normal array
+let subArray = Array(subArraySlice)

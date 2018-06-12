@@ -2,6 +2,25 @@
 
 import UIKit
 
+// String to Ascii
+
+// 97
+let a = UnicodeScalar("a")!
+let aIntValue = a.value
+
+// Will print the letter
+print(a)
+// Will print the ascii number value
+print(a.value)
+
+// 122
+let z = UnicodeScalar("z")!
+//65
+let A = UnicodeScalar("A")!
+//90
+let Z = UnicodeScalar("Z")!
+
+
 // Reverse a string with character array or use .reverse function
 
 let str = "Hello World"
@@ -47,4 +66,16 @@ let world = str.substring(with: range)
 let helloString = String(str.characters.prefix(5))
 let worldString = String(str.characters.suffix(6))
 
+
+public struct BoyerMoore{
+    
+    
+}
+
+// boyerMooreObj is the preprocessing lookup table
+func boyerMoore(pattern : String, text : String, boyerMooreObj : BoyerMoore) -> Void{
+    
+    var index = 0
+
+}
 

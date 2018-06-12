@@ -178,28 +178,29 @@ public class BinaryTree : CustomStringConvertible{
 
 }
 
-//let tree = BinaryTree(val: 1)
-//tree.root?.left = Node(val: 2)
-//tree.root?.right = Node(val: 3)
-//tree.root?.left?.left = Node(val: 4)
-//tree.root?.left?.right = Node(val: 5)
-//let n1 = Node(val: 1)
-//
-//tree.preorderPrint(node: tree.root)
-//tree.preorderSearch(node: tree.root, value: 7)
-//tree.postorderPrint(node: tree.root)
-//
-//
-//tree.printTree(traversal: .preorder)
-//tree.printTree(traversal: .postorder)
-//tree.printTree(traversal: .inorder)
-//tree.bstInsert(node: tree.root, value: 7)
-//tree.bstInsert(node: tree.root, value: 2)
-//tree.printTree(traversal: .inorder)
+let tree = BinaryTree(val: 1)
+tree.root?.left = Node(val: 2)
+tree.root?.right = Node(val: 3)
+tree.root?.left?.left = Node(val: 4)
+tree.root?.left?.right = Node(val: 5)
+let n1 = Node(val: 1)
+
+tree.preorderPrint(node: tree.root)
+tree.preorderSearch(node: tree.root, value: 7)
+tree.postorderPrint(node: tree.root)
 
 
-var tree2 = BinaryTree(val: 1)
-tree2.bstInsert(node: tree2.root, value: 2)
-//tree2.bstInsert(node: tree2.root, value: 3)
-let x = tree2.treeString(traversal: .preorder)
-print(x)
+tree.printTree(traversal: .preorder)
+tree.printTree(traversal: .postorder)
+tree.printTree(traversal: .inorder)
+tree.bstInsert(node: tree.root, value: 7)
+tree.bstInsert(node: tree.root, value: 2)
+tree.printTree(traversal: .inorder)
+
+
+//var tree2 = BinaryTree(val: 1)
+//tree2.bstInsert(node: tree2.root, value: 2)
+////tree2.bstInsert(node: tree2.root, value: 3)
+//let x = tree2.treeString(traversal: .preorder)
+//print(x)
+
