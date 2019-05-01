@@ -7,8 +7,9 @@ public struct StructRef{
     
     
     
-    public init(value : Int) {
-        mutableVal = value
-        immutableVal = value
-        mutableStr = String(value)
-    }}
+//    public init(value : Int) {
+//        mutableVal = value
+//        immutableVal = value
+//        mutableStr = String(value)
+//    }
+}

@@ -23,6 +23,7 @@ print(aClass.mutableVal)
 
 
 let aStruct = StructRef(value: 2)
+//let astr = StructRef()
 // Both are invalid statements
 //aStruct.mutableVal = 3
 //aStruct.immutableVal = 3
