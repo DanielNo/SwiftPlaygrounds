@@ -20,7 +20,7 @@ public class ListNode {
     }
     
     // Was a little difficult to implement due to self not being able to invoke the next variable.
-    convenience init(_ arr : [Int]) {
+    public convenience init(_ arr : [Int]) {
         self.init(0)
         var head : ListNode? // Need another var to traverse the linked list
         for (index,num) in arr.enumerated(){
@@ -32,5 +32,14 @@ public class ListNode {
                 head = head?.next
             }
         }
+    }
+    
+    public func traverse(){
+        var linkedList = self as ListNode?
+        while linkedList != nil {
+            print(linkedList?.val)
+            linkedList = linkedList?.next
+        }
+        
     }
 }
