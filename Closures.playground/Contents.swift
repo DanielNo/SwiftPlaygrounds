@@ -73,12 +73,33 @@ func workHard(enterDoStuff: (Bool) -> Void) {
 }
 
 func someFunctionWithEscapingClosure(completionHandler: @escaping ([String:String]) -> String) {
-    let data = Data()
     let dict = ["a" : "1", "b" : "2"]
     completionHandler(dict)
 
 }
+
+// default nil completion handler
+func someFunctionWithCompletionHandler(completion: (()->Void)? = nil){
+    print("get data")
+    completion?()
+    
+}
+
+func someFunctionWithReturnValueClosure(completion: (String)->String){
+    let data = "data"
+    completion(data)
+}
+
 someFunctionWithEscapingClosure {dict -> String in
     print(dict)
     return "hello world"
+}
+
+someFunctionWithCompletionHandler()
+someFunctionWithCompletionHandler {
+    print("execute")
+}
+
+let str = someFunctionWithReturnValueClosure { (data) -> String in
+    return data
 }
