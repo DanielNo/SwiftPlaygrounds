@@ -107,11 +107,11 @@ public class BinaryTree : CustomStringConvertible{
     func printTree(traversal : TreeTraversal){
         switch traversal {
         case .postorder:
-            print(self.postorderPrint(node: self.root))
+            print("post order : \(self.postorderPrint(node: self.root))")
         case .preorder:
-            print(self.preorderPrint(node: self.root))
+            print("pre order : \(self.preorderPrint(node: self.root))")
         case .inorder:
-            print(self.inorderPrint(node: self.root))
+            print("in order : \(self.inorderPrint(node: self.root))")
         }
     }
 
@@ -141,10 +141,10 @@ public class BinaryTree : CustomStringConvertible{
             return node.description
         }
         if node.left != nil && node.right == nil {
-            return preorderPrint(node:node.left!)
+            return node.description + preorderPrint(node:node.left!)
         }
         if node.left == nil && node.right != nil {
-            return preorderPrint(node:node.right!)
+            return node.description + preorderPrint(node:node.right!)
         }
 
         return node.description + preorderPrint(node:node.left!) + preorderPrint(node:node.right!)
@@ -155,10 +155,10 @@ public class BinaryTree : CustomStringConvertible{
             return node.description
         }
         if node.left != nil && node.right == nil {
-            return postorderPrint(node:node.left!)
+            return node.description + postorderPrint(node:node.left!)
         }
         if node.left == nil && node.right != nil {
-            return postorderPrint(node:node.right!)
+            return node.description + postorderPrint(node:node.right!)
         }
         return postorderPrint(node:node.left!) + postorderPrint(node:node.right!) + node.description
     }
@@ -168,10 +168,10 @@ public class BinaryTree : CustomStringConvertible{
             return node.description
         }
         if node.left != nil && node.right == nil {
-            return inorderPrint(node:node.left!)
+            return node.description + inorderPrint(node:node.left!)
         }
         if node.left == nil && node.right != nil {
-            return inorderPrint(node:node.right!)
+            return node.description + inorderPrint(node:node.right!)
         }
         return inorderPrint(node:node.left!) + node.description + inorderPrint(node:node.right!)
     }
@@ -195,7 +195,11 @@ tree.printTree(traversal: .postorder)
 tree.printTree(traversal: .inorder)
 tree.bstInsert(node: tree.root, value: 7)
 tree.bstInsert(node: tree.root, value: 2)
+tree.bstInsert(node: tree.root, value: 8)
+
+tree.printTree(traversal: .postorder)
 tree.printTree(traversal: .inorder)
+tree.printTree(traversal: .preorder)
 
 
 //var tree2 = BinaryTree(val: 1)

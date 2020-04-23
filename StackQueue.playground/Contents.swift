@@ -114,3 +114,41 @@ var myQueue = Queue()
 myQueue.enqueue(node: node1)
 myQueue.enqueue(node: node1)
 
+
+
+public class StackArray<T>{
+    
+    private var arr : [T]
+    
+    init() {
+        arr = Array()
+    }
+    
+    public func push(val : T){
+        arr.append(val)
+    }
+    
+    public func pop(){
+        arr.removeLast()
+    }
+    
+    public func peek() -> T?{
+        return arr.last
+    }
+    
+    public func isEmpty() -> Bool{
+        return arr.count == 0
+    }
+    
+    public func printStack(){
+        print("Stack Top")
+        for element in arr.reversed(){
+            print(element)
+        }
+        print("Stack Bottom")
+    }
+    
+    
+}
+
+
