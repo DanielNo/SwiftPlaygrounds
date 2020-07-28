@@ -40,6 +40,8 @@ public class BinaryTree : CustomStringConvertible{
     }
     
     enum TreeTraversal {
+        case bfsLevelorderQueue
+        case bfsLevelorder
         case preorder
         case postorder
         case inorder
@@ -95,6 +97,10 @@ public class BinaryTree : CustomStringConvertible{
 
     func treeString(traversal : TreeTraversal) -> String{
         switch traversal {
+        case .bfsLevelorderQueue:
+            return self.postorderPrint(node: self.root)//fix this
+        case .bfsLevelorder:
+            return self.postorderPrint(node: self.root)//fix this
         case .postorder:
             return self.postorderPrint(node: self.root)
         case .preorder:
@@ -106,6 +112,10 @@ public class BinaryTree : CustomStringConvertible{
     
     func printTree(traversal : TreeTraversal){
         switch traversal {
+        case .bfsLevelorderQueue:
+            print("bfs level order using queue : \(self.levelOrderPrintQueueApproach(node: self.root))")
+        case .bfsLevelorder:
+            print("bfs level order : \(self.levelOrderPrint(node: self.root))")
         case .postorder:
             print("post order : \(self.postorderPrint(node: self.root))")
         case .preorder:
@@ -114,7 +124,52 @@ public class BinaryTree : CustomStringConvertible{
             print("in order : \(self.inorderPrint(node: self.root))")
         }
     }
+    /////////////////////////////////////////////////////////
+    // BREADTH FIRST SEARCH
+    /////////////////////////////////////////////////////////
+    
+    
+    // TODO : Try implement using geeksforgeeks approach #1
+    // Time Complexity: O(n^2) in worst case. For a skewed tree, printGivenLevel() takes O(n) time where n is the number of nodes in the skewed tree. So time complexity of printLevelOrder() is O(n) + O(n-1) + O(n-2) + .. + O(1) which is O(n^2).
+    // Space Complexity: O(n) in worst case. For a skewed tree, printGivenLevel() uses O(n) space for call stack. For a Balanced tree, call stack uses O(log n) space, (i.e., height of the balanced tree).
 
+
+    func levelOrderPrint(node : Node?) -> String{
+        guard let n = node else{
+            return ""
+        }
+        return n.description + levelOrderPrint(node: node?.left) + levelOrderPrint(node: node?.right)
+        
+    }
+    
+    // Time Complexity: O(n) where n is number of nodes in the binary tree
+    // Space Complexity: O(n) where n is number of nodes in the binary tree
+    func levelOrderPrintQueueApproach(node : Node?) -> String{
+        guard let r = node else{
+            return ""
+        }
+        var queue : [Node] = [r]
+        
+        var output : String = ""
+        while queue.count > 0{
+            let n = queue.removeFirst()
+            output.append(n.description)
+
+            if let left = n.left{
+                queue.append(left)
+            }
+            if let right = n.right{
+                queue.append(right)
+            }
+        }
+        
+        return output
+    }
+    
+    
+    /////////////////////////////////////////////////////////
+    // DEPTH FIRST SEARCH
+    /////////////////////////////////////////////////////////
     
     func preorderSearch(node : Node, value : Int) -> Bool{
         if node.value == value{
@@ -175,8 +230,54 @@ public class BinaryTree : CustomStringConvertible{
         }
         return inorderPrint(node:node.left!) + node.description + inorderPrint(node:node.right!)
     }
+    
+    // Time : O(n), Space : O(1). Optimal tree traversal algorithm
+    func morrisTraversal(_ root: Node?) -> [Int]{
+        var curr = root
+        var arr : [Int] = Array()
+        while curr != nil{
+            if curr?.left == nil{
+                arr.append(curr!.value)
+                curr = curr?.right
+            }else{
+                var predecessor = findRightPredecessor(node: curr?.left)
+                if predecessor?.right == nil{
+                    predecessor?.right = curr
+                    curr = curr?.left
+                    
+                }else{
+                    predecessor?.right = nil
+                    arr.append(curr!.value)
+                    curr = curr?.right
+                }
+
+            }
+        }
+        return arr
+    }
+    
+    func findRightPredecessor(node : Node?) -> Node?{
+        var pred : Node? = node
+        while pred?.right != nil {
+            pred = pred?.right
+        }
+        return pred
+    }
+
+
 
 }
+/*
+    1
+  2   3
+ 4 5
+ 
+ BFS level order: 1,2,3,4,5
+ 
+ DFS in order: 4,2,5,1,3
+ DFS pre order: 1,2,4,5,3
+ DFS post order: 4,5,2,3,1
+ */
 
 let tree = BinaryTree(val: 1)
 tree.root?.left = Node(val: 2)
@@ -193,6 +294,9 @@ tree.postorderPrint(node: tree.root)
 tree.printTree(traversal: .preorder)
 tree.printTree(traversal: .postorder)
 tree.printTree(traversal: .inorder)
+//tree.printTree(traversal: .bfsLevelorder)
+tree.printTree(traversal: .bfsLevelorderQueue)
+
 tree.bstInsert(node: tree.root, value: 7)
 tree.bstInsert(node: tree.root, value: 2)
 tree.bstInsert(node: tree.root, value: 8)
@@ -208,3 +312,5 @@ tree.printTree(traversal: .preorder)
 //let x = tree2.treeString(traversal: .preorder)
 //print(x)
 
+
+tree.morrisTraversal(tree.root)
