@@ -234,3 +234,14 @@ let x = hQuickSort(numArray: testCase3)
 //insertionSort(numsArray: [3,2,1,4,5])
 //insertionSort(numsArray: [5,3,9,4,5])
 
+
+
+// Sort method example
+var numbers = [3,6,2,7,33,2,439]
+var sortedNumbers = numbers.sorted()
+print(sortedNumbers)
+
+var descendingSortedNumbers = numbers.sorted { (a, b) -> Bool in
+    return a > b
+}
+print(descendingSortedNumbers)

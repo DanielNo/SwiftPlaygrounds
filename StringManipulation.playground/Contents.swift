@@ -5,7 +5,7 @@ import UIKit
 // String to Ascii
 
 // 97
-let a = UnicodeScalar("a")!
+let a = UnicodeScalar("a")
 let aIntValue = a.value
 
 // Will print the letter
@@ -14,11 +14,15 @@ print(a)
 print(a.value)
 
 // 122
-let z = UnicodeScalar("z")!
+let z = UnicodeScalar("z")
 //65
-let A = UnicodeScalar("A")!
+let A = UnicodeScalar("A")
 //90
-let Z = UnicodeScalar("Z")!
+let Z = UnicodeScalar("Z")
+
+let letter = Character("s")
+let test = letter.isLetter
+let str = "word"
 
 
 // Reverse a string with character array or use .reverse function
@@ -27,7 +31,7 @@ let str = "Hello World"
 
 func reverseString(string : String) -> String{
     var reversedString = [Character]()
-    for (index,char) in string.characters.enumerated(){
+    for (index,char) in string.enumerated(){
         reversedString.append(char)
     }
     print(reversedString)
@@ -63,8 +67,8 @@ let range = startIndex ..< endIndex
 let world = str.substring(with: range)
 
 // Substring using character array
-let helloString = String(str.characters.prefix(5))
-let worldString = String(str.characters.suffix(6))
+let helloString = String(str.prefix(5))
+let worldString = String(str.suffix(6))
 
 
 public struct BoyerMoore{
