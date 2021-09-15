@@ -24,14 +24,60 @@ func swapTwoValues<Element>(_ a: inout Element, _ b: inout Element) {
     b = temporaryA
 }
 
-struct test<T>{
-    var dict : [Hashable:T]
-    init() {
-        
+class PersonClass : CustomStringConvertible{
+    var description: String
+    
+    var name : String
+    var id : Int
+    
+    init(_ n : String,_ idNum : Int) {
+        name = n
+        id = idNum
+        description = "\(name) : \(id)"
     }
+    
+}
+
+class PersonStruct : CustomStringConvertible{
+    var description: String
+    
+    var name : String
+    var id : Int
+    
+    init(_ n : String,_ idNum : Int) {
+        name = n
+        id = idNum
+        description = "\(name) : \(id)"
+    }
+    
 }
 
 
+let testA = "a"
+let testB = "z"
+
+var personA = PersonClass("Angela Class", 100)
+var personB = PersonClass("Bobby Class",999)
+var personC = PersonClass("Canela Class",9000)
+personC = personA
+
+swapTwoValuez(&personA, &personB)
+//print("\(personA), \(personB), \(personC)")
+
+var personStructA = PersonStruct("Angela Struct", 100)
+var personStructB = PersonStruct("Bobby Struct", 999)
+var personStructC = PersonStruct("Canela Struct", 9000)
+print("\(personStructA), \(personStructB), \(personStructC)")
+
+personStructA = personStructB
+
+// copying values from a to c
+// swap b and c, since c has copied a, b should be a & a should be b
+
+print("\(personStructA), \(personStructB), \(personStructC)")
+swapTwoValuez(&personStructA, &personStructC)
+print("\(personStructA), \(personStructB), \(personStructC)")
+print(personStructA.name)
 
 //struct GenericQueue<T>{
 //    fileprivate var elements : [T] = []
@@ -87,9 +133,6 @@ class ListNode<Element>{
 
 var n1 = ListNode(element: "1")
 n1.add(newElement: ListNode(element: "2"))
-print(n1.val)
-print(n1.next?.val)
-
 
 
 var node = ListNode(element: "1")
@@ -97,16 +140,14 @@ var node = ListNode(element: "1")
 var aStack = GenericStack(elements: [1,2,3,4,5])
 aStack.push(newElement: 6)
 aStack.pop()
-print(aStack)
 var x = aStack
 x.pop()
 x.pop()
-print(x)
 
 
 let optionalName = Optional<String>.some("Princess Moana")
 let optionalNum = Optional<Int>.some(1)
-print(optionalName!)
+//print(optionalName!)
 
 var myQueue = GenericQueue(elements: [1,2,3,4,5])
 myQueue.enqueue(newElement: 2)
@@ -116,4 +157,3 @@ myQueue.dequeue()
 myQueue.dequeue()
 myQueue.dequeue()
 myQueue.dequeue()
-print(myQueue)

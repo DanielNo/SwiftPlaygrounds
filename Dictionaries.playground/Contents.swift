@@ -2,6 +2,14 @@
 
 import UIKit
 
+var dict : [Int : Int] = [:]
+
+for key in 0...3 {
+    dict[key] = dict[key, default: 0]+2
+}
+print(dict)
+
+
 let nums = [1,2,2,3,3,3,4,4,4,4,5]
 
 func occurenceOfNumbers(_nums : [Int]) -> [Int : Int]{
@@ -36,7 +44,6 @@ func generatePairs(_ points : [[Int]]){
     }
     for key in dict.keys{
         let val = dict[key]!
-        print(val)
         for y in 1..<val.count{
             
         }

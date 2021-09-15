@@ -103,3 +103,28 @@ someFunctionWithCompletionHandler {
 let str = someFunctionWithReturnValueClosure { (data) -> String in
     return data
 }
+
+func getPictures(completion: (UIImage,Error?) -> String){
+    let image = UIImage()
+    completion(image,nil)
+}
+
+getPictures { (image, err) -> String in
+    image.description
+    return image.description
+}
+
+
+var myReturnVariable : UIImage?
+
+func getPix(completion: @escaping (UIImage,Error?) -> String){
+    let image = UIImage()
+    completion(image,nil)
+}
+
+let image2 = getPix { (img, err) -> String in
+    myReturnVariable = img
+    return "return value string"
+}
+print(image2)
+
